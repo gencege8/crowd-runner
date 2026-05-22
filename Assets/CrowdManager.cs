@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using static GameManager;
 
 public class CrowdManager : MonoBehaviour
 {
@@ -16,6 +17,7 @@ public class CrowdManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (GameManager.instance.currentState != GameState.Playing) return;
         int i = 0;
         foreach (Transform t in followers)
         {

@@ -1,4 +1,5 @@
 using UnityEngine;
+using static GameManager;
 
 public class TrackGen : MonoBehaviour
 {
@@ -22,7 +23,7 @@ public class TrackGen : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (GameManager.instance.currentState != GameState.Playing) return;
         spawnAheadDistance = Vector3.Distance(player.position, spawnedChunkPos);
         if (spawnAheadDistance < calib)
         {

@@ -1,4 +1,5 @@
 using UnityEngine;
+using static GameManager;
 
 public class Movement : MonoBehaviour
 {
@@ -18,16 +19,7 @@ public class Movement : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        /*if (Input.GetKey(KeyCode.D))
-        {
-            rb.MovePosition(transform.position + Vector3.right * Time.fixedDeltaTime * moveSpeed);
-            
-        }
-        if (Input.GetKey(KeyCode.A))
-        {
-            rb.MovePosition(transform.position + Vector3.left * Time.fixedDeltaTime * moveSpeed);
-
-        }*/
+        if (GameManager.instance.currentState != GameState.Playing) return;
         if (Input.touchCount > 0)
         {
             Touch touch = Input.touches[0];
