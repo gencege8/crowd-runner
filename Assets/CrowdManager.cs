@@ -57,6 +57,15 @@ public class CrowdManager : MonoBehaviour
         followers.Add(npc);
         crowdCount++;
     }
+    public int GetTotalDamage()
+    {
+        int totalDamage = 0;
+        foreach(Transform t in followers)
+        {
+            totalDamage += t.GetComponent<NpcSide>().unitData.damage;
+        }
+        return totalDamage;
+    }
     public void RemoveFollower()
     {
         npcToDelete = followers[followers.Count - 1];
