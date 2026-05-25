@@ -74,7 +74,7 @@ public class CrowdManager : MonoBehaviour
                     for (int i = 0; i < 5; i++)
                     {
                         GameObject newNpc =Instantiate(npcPrefab, player.position, Quaternion.identity);
-                        AddFollower(newNpc.transform);
+                        //AddFollower(newNpc.transform);
                         
                     }
                 }
