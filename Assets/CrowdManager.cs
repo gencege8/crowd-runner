@@ -10,7 +10,7 @@ public class CrowdManager : MonoBehaviour
     public float spacing;
     Transform npcToDelete;
     public GameObject npcPrefab;
-    int crowdCount=0;
+    public int crowdCount=0;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -65,6 +65,30 @@ public class CrowdManager : MonoBehaviour
             totalDamage += t.GetComponent<NpcSide>().unitData.damage;
         }
         return totalDamage;
+    }
+    public void KillNpc(int bossDamage)
+    {
+        for (int i=followers.Count-1; i>=0; i--)
+        {
+
+            if(bossDamage >= followers[i].GetComponent<NpcSide>().currentHp){
+                bossDamage -= followers[i].GetComponent<NpcSide>().currentHp;
+                RemoveSpecific(i);
+            }
+            if(bossDamage < followers[i].GetComponent<NpcSide>().currentHp)
+            {
+                followers[i].GetComponent<NpcSide>().currentHp -= bossDamage;
+                bossDamage = 0;
+                break;
+            }
+        }
+    }
+    public void RemoveSpecific(int index)
+    {
+        Transform specificNpc = followers[index];
+        followers.RemoveAt(index);
+        Destroy(specificNpc.gameObject);
+        crowdCount--;
     }
     public void RemoveFollower()
     {
